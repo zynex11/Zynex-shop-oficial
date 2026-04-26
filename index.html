@@ -6,19 +6,13 @@
     <title>ZYNEX | Official Store</title>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-        
-        /* HEADER */
         .cart-header { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; z-index: 1000; border-bottom: 1px solid #222; box-sizing: border-box; }
         .logo-text { letter-spacing: 8px; font-weight: 900; font-size: 1.4rem; margin: 0; color: #0ff; }
         .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; }
         #cart-count { position: absolute; top: -8px; right: -12px; background: #fff; color: #000; font-size: 0.7rem; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-
-        /* KORPA */
         .cart-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 20px; box-sizing: border-box; overflow-y: auto; }
         .cart-overlay.active { right: 0; }
         .close-cart { font-size: 1.2rem; cursor: pointer; color: #0ff; font-weight: bold; text-transform: uppercase; }
-        
-        /* FORMA */
         .checkout-form { margin-top: 20px; display: none; background: #0a0a0a; padding: 20px; border-radius: 15px; border: 1px solid #222; }
         .checkout-form.active { display: block; }
         .input-group { margin-bottom: 15px; }
@@ -28,8 +22,6 @@
         label { font-size: 0.8rem; color: #888; text-transform: uppercase; }
         .cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #111; }
         .total-box { margin-top: 20px; font-size: 1.5rem; font-weight: 900; text-align: right; color: #0ff; border-top: 1px solid #222; padding-top: 15px; }
-
-        /* KONTEJNER I PROIZVODI */
         .container { padding: 100px 20px 50px 20px; max-width: 450px; margin: 0 auto; }
         .shipping-note { text-align: center; color: #0ff; font-size: 0.85rem; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid #0ff; padding: 10px; border-radius: 10px; }
         .product-card { background: #080808; border: 1px solid #1a1a1a; border-radius: 25px; margin-bottom: 30px; padding: 15px; }
@@ -37,7 +29,6 @@
         .badge { background: #0ff; color: #000; font-size: 0.6rem; padding: 4px 8px; border-radius: 5px; font-weight: 900; margin-bottom: 10px; display: inline-block; }
         .size-info { color: #888; font-size: 0.8rem; margin: 10px 0 15px 0; display: block; font-style: italic; }
         .buy-btn { background: #fff; color: #000; border: none; width: 100%; padding: 18px; font-weight: 900; border-radius: 12px; cursor: pointer; text-transform: uppercase; }
-        
         .flying-item { position: fixed; width: 50px; height: 50px; background-size: cover; border-radius: 50%; z-index: 9999; transition: all 0.7s; border: 2px solid #fff; }
     </style>
 </head>
@@ -69,33 +60,22 @@
 
         <div class="product-card">
             <div class="badge">BESTSELLER</div>
-            <div class="img-wrap"><img src="https://i.postimg.cc/P5fjSm8V/file-0000000072f8720a9997474ec361edec.png"></div>
+            <div class="img-wrap"><img src="file_0000000072f8720a9997474ec361edec.png"></div>
             <div class="info">
                 <h2 style="margin: 15px 0 5px 0;">Signature Shirt</h2>
                 <div style="font-size:1.8rem; font-weight:900;">1.400 RSD</div>
                 <span class="size-info">Sve veličine su dostupne (S-XXL)</span>
-                <button class="buy-btn" onclick="addToCart('Signature Shirt', 1400, 'https://i.postimg.cc/P5fjSm8V/file-0000000072f8720a9997474ec361edec.png', event)">DODAJ U KORPU</button>
+                <button class="buy-btn" onclick="addToCart('Signature Shirt', 1400, 'file_0000000072f8720a9997474ec361edec.png', event)">DODAJ U KORPU</button>
             </div>
         </div>
 
         <div class="product-card">
-            <div class="badge">NOVO</div>
-            <div class="img-wrap"><img src="https://i.postimg.cc/j5KqrCg2/1777234290869.png"></div>
-            <div class="info">
-                <h2 style="margin: 15px 0 5px 0;">Classic Logo</h2>
-                <div style="font-size:1.8rem; font-weight:900;">1.400 RSD</div>
-                <span class="size-info">Sve veličine su dostupne (S-XXL)</span>
-                <button class="buy-btn" onclick="addToCart('Classic Logo', 1400, 'https://i.postimg.cc/j5KqrCg2/1777234290869.png', event)">DODAJ U KORPU</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="img-wrap"><img src="https://i.postimg.cc/QCsTP4D5/file-00000000574c71f492b1c3a7da8b1f62.png"></div>
+            <div class="img-wrap"><img src="file_00000000574c71f492b1c3a7da8b1f62.png"></div>
             <div class="info">
                 <h2 style="margin: 15px 0 5px 0;">ZYNEX Shorts</h2>
                 <div style="font-size:1.8rem; font-weight:900;">900 RSD</div>
                 <span class="size-info">Sve veličine su dostupne</span>
-                <button class="buy-btn" onclick="addToCart('Shorts', 900, 'https://i.postimg.cc/QCsTP4D5/file-00000000574c71f492b1c3a7da8b1f62.png', event)">DODAJ U KORPU</button>
+                <button class="buy-btn" onclick="addToCart('Shorts', 900, 'file_00000000574c71f492b1c3a7da8b1f62.png', event)">DODAJ U KORPU</button>
             </div>
         </div>
     </div>
