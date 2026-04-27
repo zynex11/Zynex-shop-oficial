@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNEX | MANGUP Kolekcija</title>
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: auto; border: 1px solid #333; padding: 20px; border-radius: 15px; background: #0a0a0a; }
+        
+        h1 { letter-spacing: 5px; text-transform: uppercase; border-bottom: 2px solid white; display: inline-block; padding-bottom: 10px; }
+        .tagline { color: #888; font-style: italic; margin-bottom: 30px; }
+
+        img { width: 100%; border-radius: 10px; margin-bottom: 20px; border: 1px solid #222; }
+
+        /* Ikonice poverenja */
+        .trust-badges { display: flex; justify-content: space-around; margin: 30px 0; padding: 15px; background: #111; border-radius: 10px; font-size: 13px; }
+        .badge { flex: 1; }
+
+        /* Tabela veličina */
+        .size-chart { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; }
+        .size-chart th, .size-chart td { border: 1px solid #333; padding: 10px; }
+        .size-chart th { background: #1a1a1a; }
+
+        /* Dugme sa zvukom */
+        .order-btn { 
+            background: white; color: black; border: none; padding: 20px 40px; 
+            font-weight: bold; font-size: 18px; cursor: pointer; border-radius: 5px;
+            transition: 0.3s; width: 100%; margin-top: 20px;
+        }
+        .order-btn:hover { background: #ccc; transform: scale(1.02); }
+
+        .spotify-wrap { margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ZYNEX</h1>
+        <p class="tagline">BUILT DIFFERENT | SOMBOR</p>
+
+        <img src="TVOJA_SLIKA_BEZ_JELENA.png" alt="Mangup Set">
+
+        <h2>MANGUP KOMPLET (ALL-BLACK)</h2>
+        <p>Premium 100% pamuk sa 3D puff štampom. Limitirana serija za one koji drže do stila.</p>
+
+        <h3>TABELA VELIČINA</h3>
+        <table class="size-chart">
+            <tr><th>Veličina</th><th>Preporučena visina</th></tr>
+            <tr><td>S</td><td>160cm - 170cm</td></tr>
+            <tr><td>M</td><td>170cm - 180cm</td></tr>
+            <tr><td>L</td><td>180cm +</td></tr>
+        </table>
+
+        <div class="trust-badges">
+            <div class="badge">🚚<br>Brza dostava</div>
+            <div class="badge">📦<br>Plati pouzećem</div>
+            <div class="badge">🔥<br>3D Puff Štampa</div>
+        </div>
+
+        <audio id="btnAudio">
+            <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
+        </audio>
+
+        <button class="order-btn" onclick="document.getElementById('btnAudio').play(); alert('Narudžbina pokrenuta! Javljamo se u DM.');">
+            NARUČI MANGUP SET
+        </button>
+
+        <div class="spotify-wrap">
+            <p>Slušaj ZYNEX Vibe dok skroluješ:</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsKG7P9v8?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
