@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNEX | MANGUP SHOP</title>
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 15px; text-align: center; }
+        .container { max-width: 600px; margin: auto; border: 1px solid #222; padding: 25px; border-radius: 20px; background: #080808; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        h1 { letter-spacing: 8px; text-transform: uppercase; font-size: 2.5em; margin-bottom: 5px; }
+        .loc { color: #555; font-size: 12px; letter-spacing: 3px; margin-bottom: 30px; }
+
+        .product-card { background: #111; border-radius: 15px; padding: 15px; margin-bottom: 25px; border: 1px solid #222; }
+        .price { font-size: 24px; font-weight: bold; color: #fff; margin: 10px 0; }
+        .old-price { text-decoration: line-through; color: #444; font-size: 16px; margin-right: 10px; }
+
+        /* Tabela veličina */
+        .size-chart { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 13px; color: #ccc; }
+        .size-chart th, .size-chart td { border: 1px solid #222; padding: 8px; }
+        
+        /* Ikonice poverenja */
+        .trust { display: flex; justify-content: space-around; margin: 25px 0; font-size: 12px; color: #888; border-top: 1px solid #111; padding-top: 20px; }
+
+        /* Dugme sa zvukom */
+        .order-btn { 
+            background: white; color: black; border: none; padding: 18px; 
+            font-weight: 900; font-size: 16px; cursor: pointer; border-radius: 8px;
+            transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .order-btn:hover { background: #ddd; transform: translateY(-2px); }
+
+        .spotify-box { margin-top: 40px; filter: grayscale(1); transition: 0.5s; }
+        .spotify-box:hover { filter: grayscale(0); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ZYNEX</h1>
+        <div class="loc">SOMBOR • SERBIA</div>
+
+        <div class="product-card">
+            <h3>МАНГУП MAJICA (3D PUFF)</h3>
+            <p style="color: #888;">Premium pamuk, mangupski kroj</p>
+            <div class="price">1.900 DIN</div>
+            <button class="order-btn" onclick="playClick()">NARUČI MAJICU</button>
+        </div>
+
+        <div class="product-card">
+            <h3>ZYNEX ŠORC</h3>
+            <p style="color: #888;">Udobnost i stil za svaki dan</p>
+            <div class="price">1.200 DIN</div>
+            <button class="order-btn" onclick="playClick()">NARUČI ŠORC</button>
+        </div>
+
+        <div class="product-card" style="border: 1px solid white;">
+            <h3 style="color: white;">MANGUP KOMPLET 🔥</h3>
+            <p style="color: #888;">Majica + Šorc</p>
+            <div class="price"><span class="old-price">3.100</span> 2.900 DIN</div>
+            <button class="order-btn" style="background: #fff;" onclick="playClick()">UZMI CEO KOMPLET</button>
+        </div>
+
+        <table class="size-chart">
+            <tr><th>VELIČINA</th><th>VISINA (cm)</th><th>TEŽINA (kg)</th></tr>
+            <tr><td>S</td><td>160-170</td><td>55-65</td></tr>
+            <tr><td>M</td><td>170-180</td><td>65-80</td></tr>
+            <tr><td>L</td><td>180+</td><td>80+</td></tr>
+        </table>
+
+        <div class="trust">
+            <div>🚀 BRZA DOSTAVA</div>
+            <div>🤝 PLAĆANJE POUZEĆEM</div>
+            <div>🇷🇸 SOMBOR BAZA</div>
+        </div>
+
+        <audio id="btnAudio">
+            <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="spotify-box">
+            <p style="font-size: 11px; color: #444; letter-spacing: 2px;">ZYNEX VIBE PLAYLIST</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsKBpEV97?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function playClick() {
+            document.getElementById('btnAudio').play();
+            alert("Artikal dodat u korpu! Piši nam na Instagram za podatke.");
+        }
+    </script>
+
+</body>
+</html>
