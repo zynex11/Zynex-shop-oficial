@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNEX | Mangup Edition</title>
+    <style>
+        /* OSNOVNI STIL I DARK MODE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif, Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo { color: #00d4ff; font-weight: 900; font-size: 24px; letter-spacing: 4px; }
+        .cart-icon { font-size: 20px; cursor: pointer; position: relative; }
+
+        /* BANNER DOSTAVA */
+        .shipping-banner {
+            background: transparent;
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* GLAVNA KARTICA PROIZVODA */
+        .product-card {
+            width: 92%;
+            max-width: 400px;
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 0 0 20px 0; /* padding dole za dugme */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* TAJMER SEKCIJA */
+        .timer-bar {
+            background: #ff0000;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 14px;
+        }
+
+        .content-padding { padding: 20px; }
+
+        .limited-tag {
+            background: #ff0000;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* KONTEJNER ZA SLIKU */
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #0a0a0a;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* TEKST I CENA */
+        .product-name {
+            color: #ff0000;
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .product-desc {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .tag-box { display: flex; gap: 8px; margin-bottom: 25px; }
+        .tag { 
+            border: 1px solid #333; padding: 6px 12px; 
+            border-radius: 6px; font-size: 11px; color: #00d4ff; 
+        }
+
+        .price-tag { font-size: 32px; font-weight: bold; margin-bottom: 25px; }
+
+        /* DUGME */
+        .buy-button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 20px;
+            border-radius: 18px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .buy-button:active { transform: scale(0.97); background: #cc0000; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Z Y N E X</div>
+        <div class="cart-icon">🛒</div>
+    </header>
+
+    <div class="shipping-banner">🇷🇸 DOSTAVA ZA SRBIJU</div>
+
+    <div class="product-card">
+        <div class="timer-bar">
+            AKCIJA ISTIČE ZA: <span id="clock">0d 00h 00m 00s</span>
+        </div>
+
+        <div class="content-padding">
+            <div class="limited-tag">LIMITED DROP</div>
+
+            <div class="image-container">
+                <img src="majica.png" alt="Zynex Mangup Edition">
+            </div>
+
+            <h1 class="product-name">MANGUP EDITION</h1>
+            <p class="product-desc">Limitirana serija sa 3D puff štampom. Premium pamuk visokog kvaliteta. Dostupno samo 50 komada.</p>
+
+            <div class="tag-box">
+                <span class="tag">Puff Print</span>
+                <span class="tag">Premium Cotton</span>
+            </div>
+
+            <div class="price-tag">1.900 RSD</div>
+
+            <button class="buy-button">DODAJ U KORPU</button>
+        </div>
+    </div>
+
+    <script>
+        // POSTAVI DATUM KRAJA (3. Maj 2026 u 23:59:59)
+        // Meseci u JS idu od 0 do 11 (0=Jan, 4=Maj)
+        const targetDate = new Date(2026, 4, 3, 23, 59, 59).getTime();
+
+        const updateTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Računanje vremena
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Ispis u HTML
+            document.getElementById("clock").innerHTML = d + "d " + h + "h " + m + "m " + s + "s ";
+
+            // Ako vreme istekne
+            if (distance < 0) {
+                clearInterval(updateTimer);
+                document.getElementById("clock").innerHTML = "AKCIJA JE ISTEKLA";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
