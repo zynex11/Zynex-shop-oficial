@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNEX | Official Store</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        .cart-header { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; z-index: 1000; border-bottom: 1px solid #222; box-sizing: border-box; }
+        .logo-text { letter-spacing: 8px; font-weight: 900; font-size: 1.4rem; margin: 0; color: #0ff; }
+        
+        /* SLIDER STYLE */
+        .product-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 10px 0; scrollbar-width: none; }
+        .product-slider::-webkit-scrollbar { display: none; }
+        .slide-item { min-width: 85%; scroll-snap-align: center; }
+
+        .container { padding: 100px 20px 50px 20px; max-width: 450px; margin: 0 auto; }
+        .product-card { background: #080808; border: 1px solid #1a1a1a; border-radius: 25px; margin-bottom: 25px; padding: 15px; position: relative; }
+        .img-wrap img { width: 100%; border-radius: 20px; display: block; }
+        
+        .badge { background: #fff; color: #000; font-size: 0.6rem; padding: 4px 8px; border-radius: 5px; font-weight: 900; margin-bottom: 10px; display: inline-block; text-transform: uppercase; }
+        .discount-badge { position: absolute; top: 25px; right: 25px; background: #ff0000; color: #fff; padding: 5px 10px; border-radius: 8px; font-weight: 900; font-size: 0.8rem; z-index: 10; }
+        
+        .old-price { text-decoration: line-through; color: #555; font-size: 1rem; margin-right: 8px; }
+        .buy-btn { background: #fff; color: #000; border: none; width: 100%; padding: 18px; font-weight: 900; border-radius: 12px; cursor: pointer; text-transform: uppercase; margin-top: 15px; }
+        
+        .section-title { font-size: 0.8rem; letter-spacing: 2px; color: #555; text-transform: uppercase; margin-bottom: 15px; display: block; text-align: center; }
+        
+        .cart-icon { position: relative; font-size: 1.6rem; cursor: pointer; }
+        #cart-count { position: absolute; top: -8px; right: -12px; background: #fff; color: #000; font-size: 0.7rem; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .cart-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 20px; box-sizing: border-box; overflow-y: auto; }
+        .cart-overlay.active { right: 0; }
+        .close-cart { font-size: 1.2rem; cursor: pointer; color: #0ff; font-weight: bold; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        .checkout-form { margin-top: 20px; display: none; background: #0a0a0a; padding: 20px; border-radius: 15px; border: 1px solid #222; }
+        .checkout-form.active { display: block; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; background: #111; border: 1px solid #333; color: #fff; border-radius: 8px; box-sizing: border-box; margin-bottom: 10px; }
+        .total-box { margin-top: 20px; font-size: 1.5rem; font-weight: 900; text-align: right; color: #0ff; border-top: 1px solid #222; padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="cart-header">
+        <h1 class="logo-text">ZYNEX</h1>
+        <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay">
+        <span class="close-cart" onclick="toggleCart()">← NAZAD NA SHOP</span>
+        <div id="cart-items-list"></div>
+        <div id="checkout-area" class="checkout-form">
+            <h3 style="color:#0ff;">PODACI ZA DOSTAVU</h3>
+            <form action="https://formspree.io/f/mvzdnvzw" method="POST">
+                <input type="text" name="Ime" placeholder="Ime i prezime" required>
+                <select name="Velicina" required>
+                    <option value="" disabled selected>Veličina</option>
+                    <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+                </select>
+                <input type="text" name="Adresa" placeholder="Adresa i Grad" required>
+                <input type="tel" name="Telefon" placeholder="Telefon" required>
+                <input type="hidden" name="Porudzbina" id="hidden-cart-data">
+                <div class="total-box">UKUPNO: <span id="total-price">0</span> RSD</div>
+                <button type="submit" class="buy-btn" style="background:#0ff;">NARUČI SA POPUSTOM</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <span class="section-title">Zynex Tee Collection (-30%)</span>
+        <div class="product-slider">
+            <div class="slide-item">
+                <div class="product-card">
+                    <div class="discount-badge">-30%</div>
+                    <div class="badge">Black Edition</div>
+                    <div class="img-wrap"><img src="1777281500088.png"></div>
+                    <h2 style="margin:10px 0 5px 0;">MONOCHROME TEE</h2>
+                    <div style="font-size:1.4rem; font-weight:900;">
+                        <span class="old-price">1.400</span> 980 RSD
+                    </div>
+                    <button class="buy-btn" onclick="addToCart('Monochrome Tee Black (SALE)', 980)">DODAJ U KORPU</button>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="product-card">
+                    <div class="discount-badge">-30%</div>
+                    <div class="badge" style="background:#0ff;">White Edition</div>
+                    <div class="img-wrap"><img src="1777552333356.png"></div>
+                    <h2 style="margin:10px 0 5px 0;">MONOCHROME TEE</h2>
+                    <div style="font-size:1.4rem; font-weight:900;">
+                        <span class="old-price">1.400</span> 980 RSD
+                    </div>
+                    <button class="buy-btn" onclick="addToCart('Monochrome Tee White (SALE)', 980)">DODAJ U KORPU</button>
+                </div>
+            </div>
+        </div>
+
+        <span class="section-title" style="margin-top:20px;">Zynex Shorts Collection (-30%)</span>
+        <div class="product-slider">
+            <div class="slide-item">
+                <div class="product-card">
+                    <div class="discount-badge">-30%</div>
+                    <div class="badge">Black Edition</div>
+                    <div class="img-wrap"><img src="1777281491947.png"></div>
+                    <h2 style="margin:10px 0 5px 0;">ZYNEX SHORTS</h2>
+                    <div style="font-size:1.4rem; font-weight:900;">
+                        <span class="old-price">900</span> 630 RSD
+                    </div>
+                    <button class="buy-btn" onclick="addToCart('Zynex Shorts Black (SALE)', 630)">DODAJ U KORPU</button>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="product-card">
+                    <div class="discount-badge">-30%</div>
+                    <div class="badge" style="background:#0ff;">White Edition</div>
+                    <div class="img-wrap"><img src="1777552432273.png"></div>
+                    <h2 style="margin:10px 0 5px 0;">ZYNEX SHORTS</h2>
+                    <div style="font-size:1.4rem; font-weight:900;">
+                        <span class="old-price">900</span> 630 RSD
+                    </div>
+                    <button class="buy-btn" onclick="addToCart('Zynex Shorts White (SALE)', 630)">DODAJ U KORPU</button>
+                </div>
+            </div>
+        </div>
+
+        <span class="section-title" style="margin-top:20px;">Girls Only (-30%)</span>
+        <div class="product-card">
+            <div class="discount-badge">-30%</div>
+            <div class="badge" style="background:#ff007f; color:#fff;">Girls Edition</div>
+            <div class="img-wrap"><img src="1777373451467.png"></div>
+            <h2 style="margin:10px 0 5px 0; color:#ff007f;">GIRL DIFFERENT</h2>
+            <div style="font-size:1.4rem; font-weight:900;">
+                <span class="old-price">1.900</span> 1.330 RSD
+            </div>
+            <button class="buy-btn" style="background:#ff007f; color:#fff;" onclick="addToCart('Girl Different Tee (SALE)', 1330)">DODAJ U KORPU</button>
+        </div>
+
+    </div>
+
+    <script>
+        let cart = []; let total = 0;
+        function toggleCart() { document.getElementById('cart-overlay').classList.toggle('active'); }
+        function addToCart(name, price) {
+            cart.push({name, price}); total += price;
+            document.getElementById('cart-count').innerText = cart.length;
+            updateCartUI();
+        }
+        function updateCartUI() {
+            const list = document.getElementById('cart-items-list');
+            list.innerHTML = '';
+            let orderSummary = "";
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.style.display = 'flex'; div.style.justifyContent = 'space-between'; div.style.padding = '10px 0'; div.style.borderBottom = '1px solid #111';
+                div.innerHTML = `<span>${item.name}</span><span>${item.price} RSD</span>`;
+                list.appendChild(div);
+                orderSummary += item.name + ", ";
+            });
+            document.getElementById('total-price').innerText = total.toLocaleString();
+            document.getElementById('hidden-cart-data').value = orderSummary + " Total: " + total;
+            if(cart.length > 0) document.getElementById('checkout-area').classList.add('active');
+        }
+    </script>
+</body>
+</html>
